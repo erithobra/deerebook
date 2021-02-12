@@ -6,6 +6,8 @@ import './App.css';
 import Profile from './components/Profile';
 import FriendsPage from './components/FriendsPage';
 
+import axios from 'axios';
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -22,13 +24,26 @@ class App extends Component {
     }
   }
 
+  componentDidMount = async () => {
+    const user = await axios.get("https://randomuser.me/api/");
+    console.log(user.data.results[0]);
+
+    this.setState({
+      potentialFriends: user.data.results[0],
+      apiDataLoaded: true
+    })
+  }
 
   render() {
     return (
       <div className="App">
         <h1>CaseyBook</h1>
-        <Profile user = {this.state.user}/>
-        <FriendsPage />
+        { this.state.apiDataLoaded &&
+          <div>
+            <Profile user = {this.state.user} />
+            <FriendsPage potentialFriends = {this.state.potentialFriends} />
+          </div>
+        }  
       </div>
     );
   }
