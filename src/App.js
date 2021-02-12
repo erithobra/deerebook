@@ -13,8 +13,8 @@ class App extends Component {
       user: {
         name: "Casey Harding",
         username: "CRHarding",
-        image: "https://static.wikia.nocookie.net/ssb/images/1/19/Link_-_Super_Smash_Bros._Ultimate.png/revision/latest/scale-to-width-down/1000?cb=20190612145102",
-        friendList: []
+        image: "https://st3.depositphotos.com/15648834/17930/v/1600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg",
+        friendList: ["Leo"]
       },
       apiDataLoaded: false,
       potentialFriends: []
@@ -26,7 +26,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>CaseyBook</h1>
-        <Profile />
+        <Profile user = {this.state.user}/>
       </div>
     );
   }
