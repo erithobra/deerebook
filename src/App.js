@@ -25,11 +25,23 @@ class App extends Component {
   }
 
   componentDidMount = async () => {
-    const user = await axios.get("https://randomuser.me/api/");
-    console.log(user.data.results[0]);
+    const friendOne = await axios.get("https://randomuser.me/api/");
+    const friendTwo = await axios.get("https://randomuser.me/api/");
+    const friendThree = await axios.get("https://randomuser.me/api/");
+    const friendFour = await axios.get("https://randomuser.me/api/");
+    const friendFive = await axios.get("https://randomuser.me/api/");
+        
+    const friends = [
+      friendOne.data.results[0],
+      friendTwo.data.results[0],
+      friendThree.data.results[0],
+      friendFour.data.results[0],
+      friendFive.data.results[0],
+    ];
+      
 
     this.setState({
-      potentialFriends: user.data.results[0],
+      potentialFriends: friends,
       apiDataLoaded: true
     })
   }
